@@ -1,1 +1,1 @@
-worker: node Cherry.js
+worker : node app.js
