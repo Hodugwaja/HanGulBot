@@ -9,6 +9,7 @@
   "author": "HoduGwaja",
   "license": "ISC",
   "dependencies": {
+    "discord-markdown": "^2.4.1",
     "discord.js": "^12.3.1"
   }
 }
