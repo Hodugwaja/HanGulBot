@@ -11,5 +11,15 @@
   "dependencies": {
     "discord-markdown": "^2.4.1",
     "discord.js": "^12.3.1"
+  },
+  "keywords": [
+    "discord",
+    "javascript",
+    "nodejs",
+    "discord.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cropMr/HanGulBot"
   }
 }
