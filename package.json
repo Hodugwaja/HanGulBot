@@ -1,0 +1,14 @@
+{
+  "name": "gunchangbot",
+  "version": "1.0.0",
+  "description": "한글날 봇입니다",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "HoduGwaja",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.3.1"
+  }
+}
