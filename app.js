@@ -4,8 +4,8 @@ const {prefix, token} = require('./config.json')
 
 const activities_list = [
     "NULL", 
-    "한글날 날짜 확인하는중",
-    "한글 잘 쓰는지 확인중",
+    "한글날 날짜 확인",
+    "한글 잘 쓰는지 확인",
     "맥심 생기부 작성",
     "한글 홍보",
     "방세준 경고"
@@ -82,27 +82,34 @@ client.on("message", (message) => {
             user.send(embedWhoMadeHangul);
     }
     
-    if(message.guild.id === "755730887395508244"){   
-        for(var i = 0; i<args.length; i++){
-            for(var j = 0; j<alphabet.length; j++){
-                if(args[i] == alphabet[j]){
-                    message.delete();
-                    const GyungGoChannelID = "755730887815200805";
-                    const GyungGo = message.guild.channels.cache.get(GyungGoChannelID);
-                    const embedGyungGo = new discord.MessageEmbed()
-                            .setColor(`#ff0000`)
-                            .setAuthor("영어 인식!!")
-                            .setDescription("<@" + message.author.id + "> 님께서 영어를 사용하셨습니다")
-                            .addField("사용하신 곳", "<#"+message.channel.id + ">", false)
-                            .addField("해당 문장", message.content)
-                            .setThumbnail(`${message.author.avatarURL()}`)
-                        .setFooter('호두과자 #8981', 'https://imgur.com/DD3DQxx.jpg');
-                        GyungGo.send(embedGyungGo);
-                    return;
-                }   
+    const argTopic = message.channel.topic.split(" ");
+    for(var k = 0; k < argTopic.length; k++){
+        if(argTopic[k] === "#한글날"){  
+            for(var i = 0; i<args.length; i++){
+                for(var j = 0; j<alphabet.length; j++){
+                    if(args[i] == alphabet[j]){
+                        message.delete();
+                        const channel = message.guild.channels.cache.find(ch => ch.topic == '#기록');
+                        if(channel){
+                            const GyungGo = message.guild.channels.cache.get(channel.id);
+                            const embedGyungGo = new discord.MessageEmbed()
+                                    .setColor(`#ff0000`)
+                                    .setAuthor("영어 인식!!")
+                                    .setDescription("<@" + message.author.id + "> 님께서 영어를 사용하셨습니다")
+                                    .addField("사용하신 곳", "<#"+message.channel.id + ">", false)
+                                    .addField("해당 문장", message.content)
+                                    .setThumbnail(`${message.author.avatarURL()}`)
+                                .setFooter('호두과자 #8981', 'https://imgur.com/DD3DQxx.jpg');
+                                GyungGo.send(embedGyungGo);
+                            return;
+                        }   
+                    }
+                }
             }
         }
-        return;
+        if (message.content === '!react') {
+            message.react('😄');
+        }
     }
 })
 
